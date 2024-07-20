@@ -14,7 +14,7 @@ export default function Dropdown({
     <div>
         <label htmlFor={title}>{title}</label>
         <div>
-            <select className='p-2 rounded-md focus:outline-none focus:ring focus:ring-violet-300'>
+            <select value={currency} onChange={(e)=>setCurrency(e.target.value)} className='w-36 p-2 rounded-md focus:outline-none focus:ring focus:ring-violet-300'>
                 
                 {currencies?.map((currency)=>{
                    return( <option value={currency} key={currency}>
@@ -23,6 +23,7 @@ export default function Dropdown({
                    )
                 })}
             </select>
+            
         </div>
     </div>
   )
