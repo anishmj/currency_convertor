@@ -34,7 +34,7 @@ export const Currency = () => {
       const response = await axios.get(
         `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurrency}&to=${toCurrency}`
       );
-      // const data = await(response.json)
+      const data = await(response.json)
 
       setConverted(response.data.rates[toCurrency] + " " + toCurrency);
     } catch (error) {
