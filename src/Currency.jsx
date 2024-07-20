@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./index.css";
 import axios from "axios";
+import Dropdown from "./Dropdown";
 export const Currency = () => {
   const [currencies, setCurrencies] = useState([]);
   const [amount, setAmount] = useState(1);
 
+  const [fromCurrency,setfromCurrency] = useState("USD");
+  const [toCurrency,settoCurrency] = useState("INR");
+  
   async function fetchCurrency() {
     try {
       const response = await axios.get(
         "https://api.frankfurter.app/currencies"
       );
-    //   const data = await response.json();
-    setCurrencies(response.data);
+      // const data = await response.json();
+    setCurrencies(Object.keys(response.data));
     } catch (error) {
       console.error(error);
     }
@@ -28,7 +32,13 @@ export const Currency = () => {
       <div className="h-96 w-9/12 bg-amber-200 rounded-lg shadow-lg">
         <div>
           <h1 className="font-bold text-2xl">Currency Converter</h1>
+          <div>
+          <Dropdown currencies={currencies} title = "From"/>
+              {/* swap Currency */} 
+          <Dropdown currencies={currencies} title="To"/>
         </div>
+        </div>
+       
         <div className="flex justify-start pl-4 pt-32 rounded-lg">
           <div>
             <label htmlFor="amount">Amount : </label>
