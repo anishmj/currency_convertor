@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.summa_css{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px;
+}
