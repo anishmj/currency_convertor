@@ -34,7 +34,7 @@ export const Currency = () => {
       const response = await axios.get(
         `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurrency}&to=${toCurrency}`
       );
-      const data = await(response.json)
+      // const data = await(response.json)
 
       setConverted(response.data.rates[toCurrency] + " " + toCurrency);
     } catch (error) {
@@ -68,32 +68,36 @@ export const Currency = () => {
             />
           </div>
         </div>
-
-        <div className="flex justify-start pl-4 pt-32 rounded-lg">
-          <div>
-            <label htmlFor="amount">Amount : </label>
-            <input
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              type="number"
-            />
-          </div>
-          <div>
+        <div>
+          <div className="flex justify-center inset-x-0 bottom-0 pb-8 pl-4 pt-32 rounded-lg">
             <div>
-              <button
-                onClick={convertCurrency}
-                className={converting ? "animate-pulse" : ""}
-              >
-                Convert :
-              </button>
+              <label htmlFor="amount">Amount : </label>
+              <input
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                type="number"
+              />
+            </div>
+            <div></div>
+            <div>
+              <div>
+                <button
+                  onClick={convertCurrency}
+                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg flex justify-center ml-8 focus:border-rose-600 cursor:pointer border-2"
+                >
+                  Convert :
+                </button>
+              </div>
             </div>
           </div>
         </div>
-        {converted && (
-          <div className="mb-4 text-lg font-medium text-right text-green">
-            Converted Amount : {converted}
-          </div>
-        )}
+        <div>
+          {converted && (
+            <div className="mb-4 text-lg font-medium text-right text-black">
+              Converted Amount : {converted}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
