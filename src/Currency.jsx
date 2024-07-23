@@ -15,6 +15,7 @@ export const Currency = () => {
   async function fetchCurrency() {
     try {
       const response = await axios.get("https://api.frankfurter.app/currencies");
+      console.log(response.data)
       setCurrencies(Object.keys(response.data));
     } catch (error) {
       console.error(error);
